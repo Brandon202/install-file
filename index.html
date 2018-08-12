@@ -1,0 +1,274 @@
+<!-- Created by Salah Eddine-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Windows 95</title>
+        <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+        <style>
+        /* Created by Salah Eddine */
+
+/*Global Style
+*************************************/
+*{
+    margin:0;
+    padding:0;
+    font-family:VT323;
+    user-select:none;
+}
+body{
+    background-color:#008181;
+}
+
+/*Copying Window Style
+*************************************/
+div.window{
+    background-color:#C0C0C0;
+    width:350px;
+    height:290px;
+    margin:auto;
+    margin-top:40px;
+    border:4px groove white;
+    border-right-color:rgba(0,0,0,0.2);
+    border-bottom-color:rgba(0,0,0,0.2);
+}
+div.wh{
+    background-color:#008;
+    color:#feffff;
+    padding:4px;
+    font-weight:500;
+}
+div.text{
+    margin:14px;
+    line-height:24px;
+}
+div.pb{
+    position:relative;
+    width:320px;
+    height:26px;
+    background-color:#feffff;
+    margin:auto;
+    margin-top:10px;
+    border:4px groove #eee;
+    line-height:26px;
+    font-size:25px;
+    top:-13px;
+}
+.button{
+    display:block;
+    margin:auto;
+    margin-top:20px;
+    border:solid white;
+    border-width:1.5px 0 0 1.5px;
+    box-shadow:0 0 0 2px black;
+    background-color:transparent;
+    padding:2px;
+    font-size:20px;
+}
+button:focus{
+    outline:none !important;
+}
+button:active{
+    box-shadow:0 0 0 1px black;
+    transform:scale(0.96);
+}
+button div{
+    border:1px dotted black;
+    padding:0 20px;
+}
+div.rect{
+    width:100%;
+    height:100%;
+    position:absolute;
+    overflow:hidden;
+}
+div.rect .a{
+    display:inline-block;
+    background-color:#008;
+    height:100%;
+}
+div.prct{
+    text-align:center;
+    color:black;
+    position:absolute;
+    top:197.5px;
+    left:50%;
+    margin-left:-12px;
+    font-size:20px;
+    margin-top:60px;
+}
+div.hide{
+    color:#055;
+    text-align:center;
+    font-size:6em;
+    position:absolute;
+    top:5%;
+    z-index:-1;
+    animation:chcol 3s ease 0s infinite normal;
+}
+@keyframes chcol{
+    50%{color:hsl(0,80%,30%);}
+}
+
+/*Toolbar Style
+*************************************/
+div.toolbar{
+    background-color:#C0C0C0;
+    width:100%;
+    height:25px;
+    position:absolute;
+    bottom:0;
+    border-top:2px groove white;
+    padding-top:2.3px;
+    padding-left:2.3px;
+    box-sizing:border-box;
+    
+}
+div.wnds{
+    background-color:#C0C0C0;
+    height:70%;
+    width:50px;
+    border:2px groove white;
+    box-shadow:0 0 0 1px black;
+    text-align:right;
+}
+div.wnds:active{
+    transform:scale(0.95);
+}
+div.time{
+    background-color:#B8B8B8;
+    position:absolute;
+    right:2.2px;
+    top:2.45px;
+    height:70%;
+    width:40px;
+    border:1px solid white;
+    border-top-color:black;
+    border-left-color:black;
+    text-align:center;
+}
+div.tg{
+    position:absolute;
+    background-color:#C0C0C0;
+    width:50%;
+    height:45%;
+    z-index:5;
+    top:255px;
+    border:2px groove white;
+    border-bottom-width:0;
+}
+img{
+    position:absolute ;
+    width:16px;
+    bottom:4px;
+    left:5px;
+    transform:rotate(-20deg);
+}
+
+/*Popup widget Style
+*************************************/
+hr{
+    margin-top:0px;
+    
+}
+div.win95{
+    background-color:#808080;
+    font-size:40px;
+    color:#c0c0c0;
+    text-align:center;
+}
+
+.disabledbutton { pointer-events: none; opacity: 0.4; }
+#button {
+    margin-top:-5px;
+}
+#button2 {
+    font-size: 20px;
+    background-color:aqua;
+}
+        </style>
+    </head>
+    <body>
+        <div class="tg">
+            <div class="win95">Brandon 105</div>
+            <hr>
+            <div id="div">Welcome to Brandon105!<br />What should I put here?</div>
+        </div>
+        <div class="hide">Brandontop</div>
+        <div class="window">
+            <div class="wh">Installing file...</div>
+            <div class="text">
+            File:<br />
+            brandon-files/brandontop105.exe<br />
+            From:<br />
+            brandontop.bran<br />
+            Description:<br />
+            This is the all new Brandontop 105! It is a million times better than Windows 95!
+            </div>
+            <div class="pb">
+                <div class="rect">
+                    <div class="a"></div>
+                </div>
+            </div>
+            <div class="prct"></div>
+            <button id="button" class="button"><div>Cancel</div></button>
+        </div>
+        <div class="toolbar">
+            <div class="wnds">Start</div>
+            <div class="time"></div>
+            <img src="http://www.andymercer.net/www/wp-content/uploads/2012/02/winlogo3.png">
+        </div>
+        <script>
+            // Created by Salah Eddine
+
+//onLoad function
+$(function(){
+$(".hide").css("display", "none");
+$("#button2").removeClass("button");
+$(".wnds").addClass("disabledbutton");
+    //hide the start menu at the begining of the program
+    $("div.tg").hide();
+    
+    
+    //remove the "Installing File ..." window after the user clicks on the "Cancel" button and stop the alert pop up function
+    var i=0;
+    $("button").on('click',function(){
+        $("body div.hide").siblings().eq(1).remove();
+        an.stop();
+    });
+    
+    
+    //automaticaly remove the "Copying Files ..." window after the alert pop up
+    var an=$("div.rect .a").animate({width:'100%'},7500,function(){
+        setTimeout('$("body div.hide").siblings().eq(1).remove();$(".wnds").removeClass("disabledbutton");$(".hide").css("display", "block")', 200);
+    });
+    
+    
+    /*change the the pourcentage color from black to white at 50%
+    stop the incrementation when the pourcentage reach 100%
+    */
+    var clr = setInterval(function(){
+        $(".prct").text(i+++"%");
+        if(i==50){
+            $(".prct").css({"color":"white"});
+        }
+        if(i==101){
+            clearInterval(clr);
+        }
+        },75); 
+        
+        
+    //generates the current time    
+    var d=new Date();
+    var mins = ('0'+d.getMinutes()).slice(-2);
+    $("div.time").text(d.getHours()+":"+mins);
+    
+    
+    //show and hide the start menu
+    $('div.wnds').on('click',function(){
+        $("div.tg").fadeToggle(50);
+    });
+});
+        </script>
+    </body>
+</html>

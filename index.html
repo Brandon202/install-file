@@ -241,6 +241,8 @@ $(".wnds").addClass("disabledbutton");
     //automaticaly remove the "Copying Files ..." window after the alert pop up
     var an=$("div.rect .a").animate({width:'100%'},7500,function(){
         setTimeout('$("body div.hide").siblings().eq(1).remove();$(".wnds").removeClass("disabledbutton");$(".hide").css("display", "block")', 200);
+    }, 
+    duration: 10000;
     });
     
     
